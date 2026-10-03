@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">S.I.G.H.T. celestial signal seal</title>
+  <desc id="desc">A gold and cobalt orbital seal on a star field.</desc>
+  <defs>
+    <radialGradient id="field" cx="50%" cy="42%" r="64%">
+      <stop offset="0" stop-color="#102a4a"/>
+      <stop offset="0.58" stop-color="#061426"/>
+      <stop offset="1" stop-color="#010711"/>
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="240" height="240" fill="url(#field)"/>
+  <g fill="#f8dfa0">
+    <circle cx="23" cy="32" r="1.2"/><circle cx="205" cy="26" r="1"/><circle cx="218" cy="77" r="1.4"/>
+    <circle cx="29" cy="192" r="1"/><circle cx="194" cy="210" r="1.2"/><circle cx="61" cy="19" r="0.8"/>
+  </g>
+  <g fill="none" stroke="#edc35f" filter="url(#glow)">
+    <circle cx="120" cy="120" r="103" stroke-width="1.5"/>
+    <circle cx="120" cy="120" r="94" stroke-width="0.8" stroke-dasharray="2 7"/>
+    <circle cx="120" cy="120" r="76" stroke-width="1.2"/>
+    <circle cx="120" cy="120" r="54" stroke-width="0.8" stroke-dasharray="1 5"/>
+    <path d="M120 30 197 165 43 165Z" stroke-width="1.2"/>
+    <path d="m120 52 59 102H61Z" stroke-width="0.8"/>
+    <path d="M120 68 167 120 120 172 73 120Z" stroke-width="1.5"/>
+    <path d="M17 120h206M120 17v206" stroke-width="0.45" opacity="0.7"/>
+  </g>
+  <g fill="#2f70d0" stroke="#f8dfa0" stroke-width="1.5">
+    <rect x="112" y="9" width="16" height="16" transform="rotate(45 120 17)"/>
+    <rect x="211" y="112" width="16" height="16" transform="rotate(45 219 120)"/>
+    <rect x="112" y="211" width="16" height="16" transform="rotate(45 120 219)"/>
+    <rect x="13" y="112" width="16" height="16" transform="rotate(45 21 120)"/>
+  </g>
+  <circle cx="120" cy="120" r="34" fill="#061426" stroke="#edc35f" stroke-width="2" filter="url(#glow)"/>
+  <path d="M94 120c14-20 38-20 52 0-14 20-38 20-52 0Z" fill="none" stroke="#f8dfa0" stroke-width="2"/>
+  <circle cx="120" cy="120" r="9" fill="#edc35f"/>
+  <circle cx="120" cy="120" r="3" fill="#061426"/>
+  <text x="120" y="157" fill="#edc35f" font-family="monospace" font-size="8" text-anchor="middle" letter-spacing="2">S.I.G.H.T.</text>
+</svg>

@@ -1524,3 +1524,171 @@ body::before {
     animation: none;
   }
 }
+
+/* Seer gates: eye buttons (Books) + mirror portals (Nexus) */
+.eye-gate {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  padding: 30px 22px;
+}
+
+.eye-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 30px 18px 26px;
+  border: 1px solid var(--border);
+  background: radial-gradient(circle at 50% 36%, rgba(205, 225, 226, 0.09), rgba(255, 255, 255, 0.02) 62%);
+  transition: transform 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+}
+
+.eye-button:hover,
+.eye-button:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(217, 224, 223, 0.5);
+  background: radial-gradient(circle at 50% 36%, rgba(205, 225, 226, 0.16), rgba(255, 255, 255, 0.03) 62%);
+}
+
+.eye-svg {
+  width: min(230px, 68vw);
+  height: auto;
+  overflow: visible;
+}
+
+.eye-outline {
+  fill: rgba(6, 10, 13, 0.72);
+  stroke: url(#eyeLid);
+  stroke-width: 1.6;
+}
+
+.eye-iris {
+  fill: url(#eyeIris);
+}
+
+.eye-pupil {
+  fill: #030509;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.35s ease;
+}
+
+.eye-glint {
+  fill: rgba(255, 255, 255, 0.9);
+}
+
+.eye-button:hover .eye-pupil,
+.eye-button:focus-visible .eye-pupil {
+  transform: scale(1.18);
+}
+
+.eye-label {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--primary);
+  text-align: center;
+}
+
+.portal-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.portal-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 38px 24px 30px;
+  border: 1px solid var(--border);
+  background: radial-gradient(circle at 50% 40%, rgba(190, 215, 220, 0.07), rgba(255, 255, 255, 0.02) 58%);
+  transition: transform 0.35s ease, border-color 0.35s ease;
+}
+
+.portal-card:hover,
+.portal-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(217, 224, 223, 0.5);
+}
+
+.portal-mirror {
+  position: relative;
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgba(217, 224, 223, 0.4);
+  background: radial-gradient(circle at 50% 50%, #101c22 0%, #06090b 70%);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7), 0 0 42px rgba(150, 190, 200, 0.16);
+}
+
+.portal-mirror::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(186, 219, 226, 0.55) 40deg, transparent 90deg, rgba(110, 150, 164, 0.4) 170deg, transparent 220deg, rgba(226, 242, 244, 0.5) 300deg, transparent 345deg);
+  animation: portal-swirl 16s linear infinite;
+}
+
+.portal-mirror::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 33% 25%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.05) 36%, transparent 58%), radial-gradient(circle at 50% 55%, transparent 52%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.portal-mirror-rev::before {
+  animation-direction: reverse;
+}
+
+.portal-card:hover .portal-mirror::before {
+  animation-duration: 5s;
+}
+
+.portal-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+  text-align: center;
+}
+
+.portal-hint {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@keyframes portal-swirl {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 760px) {
+  .eye-gate,
+  .portal-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portal-mirror::before {
+    animation: none;
+  }
+
+  .eye-button,
+  .portal-card,
+  .eye-pupil {
+    transition: none;
+  }
+}

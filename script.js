@@ -1,1 +1,38 @@
-Ly8gVGhlIFNlZXIncyBTLkkuRy5ILlQuIOKAlCBmcm9udC1lbmQgYmVoYXZpb3IKKGZ1bmN0aW9uICgpIHsKICAvLyBGb290ZXIgeWVhcgogIHZhciB5ZWFyRWwgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgneWVhcicpOwogIGlmICh5ZWFyRWwpIHsKICAgIHllYXJFbC50ZXh0Q29udGVudCA9IG5ldyBEYXRlKCkuZ2V0RnVsbFllYXIoKTsKICB9CgogIC8vIExpdmUgZmllbGQgY2xvY2sgKGhlcm8pCiAgdmFyIGxpdmVFbCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJy5saXZlLWZpZWxkJyk7CiAgZnVuY3Rpb24gdGljaygpIHsKICAgIGlmICghbGl2ZUVsKSByZXR1cm47CiAgICB2YXIgbm93ID0gbmV3IERhdGUoKTsKICAgIGZ1bmN0aW9uIHBhZChuKSB7IHJldHVybiBTdHJpbmcobikucGFkU3RhcnQoMiwgJzAnKTsgfQogICAgbGl2ZUVsLnRleHRDb250ZW50ID0gJ0xJVkUgRklFTEQgLyAnICsgcGFkKG5vdy5nZXRIb3VycygpKSArICc6JyArIHBhZChub3cuZ2V0TWludXRlcygpKSArICc6JyArIHBhZChub3cuZ2V0U2Vjb25kcygpKTsKICB9CiAgaWYgKGxpdmVFbCkgewogICAgdGljaygpOwogICAgc2V0SW50ZXJ2YWwodGljaywgMTAwMCk7CiAgfQoKICAvLyBNb2JpbGUgbWVudSB0b2dnbGUgKHJldmVhbHMgdGhlIHNvY2lhbC9jb25uZWN0IHBhbmVsIG9uIHNtYWxsIHNjcmVlbnMpCiAgdmFyIG1lbnVCdG4gPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCcubWVudS1idXR0b24nKTsKICBpZiAobWVudUJ0bikgewogICAgbWVudUJ0bi5zZXRBdHRyaWJ1dGUoJ2FyaWEtZXhwYW5kZWQnLCAnZmFsc2UnKTsKICAgIG1lbnVCdG4uYWRkRXZlbnRMaXN0ZW5lcignY2xpY2snLCBmdW5jdGlvbiAoKSB7CiAgICAgIHZhciBvcGVuID0gZG9jdW1lbnQuYm9keS5jbGFzc0xpc3QudG9nZ2xlKCdtZW51LW9wZW4nKTsKICAgICAgbWVudUJ0bi5zZXRBdHRyaWJ1dGUoJ2FyaWEtZXhwYW5kZWQnLCBvcGVuID8gJ3RydWUnIDogJ2ZhbHNlJyk7CiAgICB9KTsKICAgIC8vIENsb3NlIHRoZSBtZW51IHdoZW4gYSBsaW5rIGluc2lkZSBpdCBpcyB0YXBwZWQKICAgIGRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ2NsaWNrJywgZnVuY3Rpb24gKGUpIHsKICAgICAgaWYgKGRvY3VtZW50LmJvZHkuY2xhc3NMaXN0LmNvbnRhaW5zKCdtZW51LW9wZW4nKSAmJiBlLnRhcmdldC5jbG9zZXN0KCcuc29jaWFsLW5hdiBhJykpIHsKICAgICAgICBkb2N1bWVudC5ib2R5LmNsYXNzTGlzdC5yZW1vdmUoJ21lbnUtb3BlbicpOwogICAgICAgIG1lbnVCdG4uc2V0QXR0cmlidXRlKCdhcmlhLWV4cGFuZGVkJywgJ2ZhbHNlJyk7CiAgICAgIH0KICAgIH0pOwogIH0KfSkoKTsK
+// The Seer's S.I.G.H.T. — front-end behavior
+(function () {
+  // Footer year
+  var yearEl = document.getElementById('year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
+
+  // Live field clock (hero)
+  var liveEl = document.querySelector('.live-field');
+  function tick() {
+    if (!liveEl) return;
+    var now = new Date();
+    function pad(n) { return String(n).padStart(2, '0'); }
+    liveEl.textContent = 'LIVE FIELD / ' + pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds());
+  }
+  if (liveEl) {
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  // Mobile menu toggle (reveals the social/connect panel on small screens)
+  var menuBtn = document.querySelector('.menu-button');
+  if (menuBtn) {
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.addEventListener('click', function () {
+      var open = document.body.classList.toggle('menu-open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    // Close the menu when a link inside it is tapped
+    document.addEventListener('click', function (e) {
+      if (document.body.classList.contains('menu-open') && e.target.closest('.social-nav a')) {
+        document.body.classList.remove('menu-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+})();
